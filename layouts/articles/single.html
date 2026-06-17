@@ -1,0 +1,88 @@
+{{ define "main" }}
+  {{ $showReadingTime := .Params.showreadingtime | default site.Params.showreadingtime | default true }}
+  {{ $hasToC := .Params.toc | default true }}
+  {{ $headers := findRE "<h[2-4]" .Content }}
+
+  <article class="tech-page">
+    <header class="tech-header">
+      <p class="tech-kicker">Code</p>
+      <h1 class="tech-title">{{ .Title }}</h1>
+      <div class="tech-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        {{ if and $showReadingTime .ReadingTime }}
+          <span aria-hidden="true">·</span>
+          <span>{{ .ReadingTime }} min read</span>
+        {{ end }}
+      </div>
+    </header>
+
+    <div class="tech-layout">
+      <div class="tech-content">
+        {{ .Content }}
+      </div>
+
+      {{ if and $hasToC (ge (len $headers) 1) }}
+        <aside class="tech-toc" aria-label="Table of contents">
+          <p class="tech-toc__label">On this page</p>
+          <nav class="tech-toc__nav">
+            {{ .TableOfContents }}
+          </nav>
+        </aside>
+      {{ end }}
+    </div>
+
+    <nav class="tech-footer-nav" aria-label="Post navigation">
+      {{ with .Parent }}
+        <a href="{{ .RelPermalink }}">All articles</a>
+      {{ else }}
+        <a href="{{ "/" | relURL }}">Home</a>
+      {{ end }}
+    </nav>
+  </article>
+
+  <script>
+    (function () {
+      var blocks = document.querySelectorAll('.tech-content .highlight, .tech-content pre');
+
+      blocks.forEach(function (block) {
+        if (block.querySelector('.code-copy-btn')) {
+          return;
+        }
+
+        var pre = block.tagName === 'PRE' ? block : block.querySelector('pre');
+        if (!pre) {
+          return;
+        }
+
+        var wrapper = block.tagName === 'PRE' ? block : block;
+        wrapper.style.position = 'relative';
+
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'code-copy-btn';
+        button.setAttribute('aria-label', 'Copy code to clipboard');
+        button.textContent = 'Copy';
+
+        button.addEventListener('click', function () {
+          var code = pre.querySelector('code');
+          var text = code ? code.textContent : pre.textContent;
+
+          if (!navigator.clipboard) {
+            return;
+          }
+
+          navigator.clipboard.writeText(text).then(function () {
+            button.textContent = 'Copied';
+            button.classList.add('code-copy-btn--success');
+            window.setTimeout(function () {
+              button.textContent = 'Copy';
+              button.classList.remove('code-copy-btn--success');
+            }, 2000);
+          });
+        });
+
+        wrapper.appendChild(button);
+      });
+    })();
+  </script>
+{{ end }}

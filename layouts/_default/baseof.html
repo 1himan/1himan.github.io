@@ -127,6 +127,7 @@
       {{ if .IsHome }}is-home{{ end }}
       {{ if .IsPage }}is-page{{ end }}
       {{ with .Section }}section-{{ . | urlize }}{{ end }}
+      {{ if eq .Section "articles" }}no-parallax{{ end }}
     "
   >
     <a href="#main-content" class="skip-link">Skip to content</a>

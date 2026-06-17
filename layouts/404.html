@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <h1>404 - Page Not Found</h1>
+  <p>The page you're looking for doesn't exist or has been moved.</p>
+
+  <nav aria-label="404 navigation">
+    <ul>
+      <li><a href="{{ "/" | relURL }}">← Return to homepage</a></li>
+      {{ with site.GetPage "/blog" }}
+        <li><a href="{{ .RelPermalink }}">Browse writing</a></li>
+      {{ end }}
+      {{ with site.GetPage "/articles" }}
+        <li><a href="{{ .RelPermalink }}">Browse articles</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ end }}

@@ -1,0 +1,35 @@
+{{ define "main" }}
+  {{ $showReadingTime := .Params.showreadingtime | default site.Params.showreadingtime | default true }}
+
+  <article class="essay-page">
+    <header class="essay-header">
+      <p class="essay-kicker">Writing</p>
+      <h1 class="essay-title">{{ .Title }}</h1>
+      <div class="essay-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        {{ if and $showReadingTime .ReadingTime }}
+          <span aria-hidden="true">·</span>
+          <span>{{ .ReadingTime }} min read</span>
+        {{ end }}
+      </div>
+    </header>
+
+    <section class="essay-story">
+      {{ partial "essay-hero.html" . }}
+
+      <div class="essay-copy">
+        <div class="essay-content">
+          {{ .Content }}
+        </div>
+      </div>
+    </section>
+
+    <nav class="essay-footer-nav" aria-label="Post navigation">
+      {{ with .Parent }}
+        <a href="{{ .RelPermalink }}">All writing</a>
+      {{ else }}
+        <a href="{{ "/" | relURL }}">Home</a>
+      {{ end }}
+    </nav>
+  </article>
+{{ end }}

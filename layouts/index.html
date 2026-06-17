@@ -1,0 +1,41 @@
+{{ define "main" }}
+  <section class="home-hero" aria-label="Introduction">
+    <div class="home-hero__sky"></div>
+    <div class="home-hero__content">
+      {{ .Content }}
+    </div>
+  </section>
+
+  <section class="home-bridge" aria-label="Explore content">
+    <h2 class="home-bridge__title">Two rooms, same house</h2>
+    <p class="home-bridge__lede">
+      Calm essays for slow reading. Technical notes for building and reference.
+    </p>
+
+    <div class="home-cards">
+      <a class="home-card home-card--writing" href="{{ "/blog/" | relURL }}">
+        <span class="home-card__eyebrow">Writing</span>
+        <span class="home-card__title">Blog</span>
+        <span class="home-card__desc">
+          Philosophy, reflection, and long-form thought — atmospheric, image-led, meant for contemplation.
+        </span>
+        <span class="home-card__cta">Read essays →</span>
+      </a>
+
+      <a class="home-card home-card--code" href="{{ "/articles/" | relURL }}">
+        <span class="home-card__eyebrow">Code</span>
+        <span class="home-card__title">Articles</span>
+        <span class="home-card__desc">
+          Programming notes, papers, and implementations — structured, scannable, built for reference.
+        </span>
+        <span class="home-card__cta">Browse articles →</span>
+      </a>
+    </div>
+  </section>
+
+  {{ with site.Menus.main }}
+    <div class="terminal-nav home-nav">
+      {{ partial "menu.html" (dict "menuID" "main" "page" $) }}
+    </div>
+  {{ end }}
+{{ end }}
