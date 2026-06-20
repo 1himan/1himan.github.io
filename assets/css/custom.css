@@ -429,14 +429,14 @@ body.is-page.section-blog .site-header .path-nav {
 
 /* Homepage bridge between blog and articles */
 body.is-home {
-  gap: clamp(2.5rem, 6vw, 4rem);
+  grid-template-columns: minmax(auto, 86rem);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .home-hero {
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  min-height: clamp(18rem, 40vw, 28rem);
 }
 
 .home-hero__sky {
@@ -459,12 +459,12 @@ body.is-home {
 .home-hero__content {
   position: relative;
   z-index: 1;
-  max-width: 42rem;
-  padding: clamp(2rem, 5vw, 3.5rem);
+  max-width: 62rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
   color: var(--color-text-primary);
   font-family: var(--font-family-reading);
   font-size: clamp(1rem, 0.9rem + 0.35vw, 1.12rem);
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
 .home-hero__content > :first-child {
@@ -487,8 +487,8 @@ body.is-home {
 }
 
 .home-bridge__lede {
-  max-width: 42rem;
-  margin: 0.75rem 0 1.75rem;
+  max-width: 62rem;
+  margin: 0.5rem 0 1.5rem;
   color: var(--color-text-muted);
   font-family: var(--font-family-reading);
   line-height: 1.7;
@@ -498,6 +498,8 @@ body.is-home {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
+  max-width: 68ch;
+  margin-inline: auto;
 }
 
 .home-card {
@@ -510,6 +512,7 @@ body.is-home {
   border-radius: 0.875rem;
   background: var(--color-bg-primary);
   text-decoration: none;
+  white-space: normal;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
@@ -557,7 +560,7 @@ body.is-home {
 }
 
 .home-nav {
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 @media (max-width: 720px) {

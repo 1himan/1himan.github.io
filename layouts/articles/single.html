@@ -5,7 +5,7 @@
 
   <article class="tech-page">
     <header class="tech-header">
-      <p class="tech-kicker">Code</p>
+      <p class="tech-kicker">{{ .Params.kicker | default "Code" }}</p>
       <h1 class="tech-title">{{ .Title }}</h1>
       <div class="tech-meta">
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
