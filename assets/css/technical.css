@@ -187,13 +187,11 @@ body.is-page.section-articles .site-header .path-nav {
 .tech-content pre {
   position: relative;
   margin: 1.75rem 0;
-  padding: 2.75rem 1.25rem 1.25rem;
   border: none;
   border-radius: 0.625rem;
   background: var(--tech-code-bg);
   color: var(--tech-code-text);
   box-shadow: 0 12px 32px rgba(24, 24, 27, 0.12);
-  overflow-x: auto;
   width: min(calc(100% + clamp(1rem, 4vw, 3rem)), calc(100vw - (var(--layout-gutter) * 2)));
   max-width: min(85rem, calc(100vw - (var(--layout-gutter) * 2)));
   margin-left: calc(-1 * clamp(0rem, 2vw, 1rem));
@@ -204,13 +202,39 @@ body.is-page.section-articles .site-header .path-nav {
   word-wrap: normal;
 }
 
-.tech-content pre code,
+.tech-content pre {
+  padding: 2.75rem 1.25rem 1.25rem;
+  overflow-x: auto;
+}
+
+.tech-content .highlight {
+  padding: 0;
+}
+
 .tech-content .highlight pre {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  margin-left: 0;
+  padding: 2.75rem 1.25rem 1.25rem;
+  border-radius: inherit;
+  background: transparent !important;
+  box-shadow: none;
+  overflow-x: auto;
+  color: inherit;
+}
+
+.tech-content pre code,
+.tech-content .highlight code {
+  display: block;
+  min-width: max-content;
   background: transparent;
   border: none;
   padding: 0;
   color: inherit;
   font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
 }
 
 .tech-content p > code,
@@ -253,10 +277,14 @@ body.is-page.section-articles .site-header .path-nav {
 .tech-toc {
   position: sticky;
   top: calc(var(--layout-gutter) + 0.5rem);
+  max-height: calc(100svh - (var(--layout-gutter) * 2) - 1rem);
   padding: 1rem 1.1rem;
   border: 1px solid var(--color-border);
   border-radius: 0.625rem;
   background: var(--color-bg-primary);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
 }
 
 .tech-toc__label {
@@ -290,7 +318,8 @@ body.is-page.section-articles .site-header .path-nav {
 .tech-toc__nav a {
   display: block;
   margin-left: 0;
-  padding: 0.15rem 0;
+  padding: 0.18rem 0.4rem;
+  border-radius: 0.35rem;
   color: var(--color-text-muted);
   font-size: 0.88rem;
   line-height: 1.45;
@@ -298,7 +327,10 @@ body.is-page.section-articles .site-header .path-nav {
   text-decoration: none;
 }
 
-.tech-toc__nav a:hover {
+.tech-toc__nav a:hover,
+.tech-toc__nav a.is-active,
+.tech-toc__nav a[aria-current="true"] {
+  background: var(--color-bg-secondary);
   color: var(--color-text-primary);
 }
 

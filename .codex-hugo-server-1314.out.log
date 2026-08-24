@@ -1,0 +1,33 @@
+Watching for changes in C:/Users/himan/projects/himan/archetypes, C:/Users/himan/projects/himan/assets/css, C:/Users/himan/projects/himan/content/{articles,blog}, C:/Users/himan/projects/himan/layouts/{_default,_partials,articles,blog}, C:/Users/himan/projects/himan/static/{downloads,favicon_io,images}, C:/Users/himan/projects/himan/themes/shibui/archetypes, C:/Users/himan/projects/himan/themes/shibui/assets/css, C:/Users/himan/projects/himan/themes/shibui/layouts/{_default,_partials,shortcodes}, C:/Users/himan/projects/himan/themes/shibui/static/favicon_io
+Watching for config changes in C:\Users\himan\projects\himan\hugo.toml, C:\Users\himan\projects\himan\themes\shibui\hugo.toml
+Start building sites … 
+hugo v0.161.1-ea8f66a7ce988664dcc84c052fc96757042e2e4a+extended windows/amd64 BuildDate=2026-04-29T13:56:01Z VendorInfo=gohugoio
+
+
+                  │ EN 
+──────────────────┼────
+ Pages            │ 14 
+ Paginator pages  │  0 
+ Non-page files   │  0 
+ Static files     │ 60 
+ Processed images │  0 
+ Aliases          │  0 
+ Cleaned          │  0 
+
+Built in 150 ms
+Environment: "development"
+Serving pages from disk
+Web Server is available at http://localhost:1314/ (bind address 127.0.0.1) 
+Press Ctrl+C to stop
+
+Change detected, rebuilding site (#1).
+2026-06-24 00:10:22.390 +0530
+Source changed /articles/what-turso-is.md
+Web Server is available at http://localhost:1314/ (bind address 127.0.0.1)
+Total in 321 ms
+
+Change detected, rebuilding site (#2).
+2026-06-24 00:10:22.827 +0530
+Source changed /articles
+Web Server is available at http://localhost:1314/ (bind address 127.0.0.1)
+Total in 79 ms
